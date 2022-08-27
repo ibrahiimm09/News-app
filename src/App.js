@@ -9,9 +9,19 @@ export default class App extends Component {
     return (
       <>
       <Navbar/>
-      <NewItem/>
-      <NewItem/>
-      <NewItem/>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-4">
+            <NewItem title='Title goes here' description='some desc'/>
+          </div>
+          <div className="col-md-4">
+            <NewItem title='Title goes here' description='some desc'/>
+          </div>
+          <div className="col-md-4">
+            <NewItem title='Title goes here' description='some desc'/>
+      </div>
+      </div>
+      </div>
       </>
     )
   }
