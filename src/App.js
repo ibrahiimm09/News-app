@@ -277,16 +277,13 @@ export default class App extends Component {
       <>
       <Navbar/>
       <div className="container">
+      <h1 className='my-2'>Top-Headlines:</h1>
         <div className="row">
-          <div className="col-md-4">
-            <NewItem title='Title goes here' description='some desc' imgUrl='https://sportshub.cbsistatic.com/i/r/2022/08/27/c4fda65c-056d-4fbc-95d1-281339c8438b/thumbnail/1200x675/138fb8098f4bb3f6b93cbf522bc467f5/northwestern-nebraska-getty.jpg'/>
+      {this.state.articles.map((element)=>{
+         return <div className="col-md-3 my-3" key={element.url}>
+            <NewItem title={element.title.slice(0, 45)} description={element.description.slice(0, 80)} imgUrl={element.urlToImage}/>
           </div>
-          <div className="col-md-4">
-            <NewItem title='Title goes here' description='some desc' imgUrl='https://sportshub.cbsistatic.com/i/r/2022/08/27/c4fda65c-056d-4fbc-95d1-281339c8438b/thumbnail/1200x675/138fb8098f4bb3f6b93cbf522bc467f5/northwestern-nebraska-getty.jpg'/>
-          </div>
-          <div className="col-md-4">
-            <NewItem title='Title goes here' description='some desc' imgUrl='https://sportshub.cbsistatic.com/i/r/2022/08/27/c4fda65c-056d-4fbc-95d1-281339c8438b/thumbnail/1200x675/138fb8098f4bb3f6b93cbf522bc467f5/northwestern-nebraska-getty.jpg'/>
-      </div>
+      })}
       </div>
       </div>
       </>

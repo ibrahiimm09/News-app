@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
 
 export class Navbar extends Component {
-  constructor(){
-    super();
-    console.log('Constructor');
-  }
+
   render() {
     return (
       <>
         <nav className="navbar navbar-expand-lg bg-light">
   <div className="container-fluid">
-    <a className="navbar-brand" href="/anything.html">Navbar</a>
+    <a className="navbar-brand" href="/anything.html">News Monkey</a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -34,7 +31,7 @@ export class Navbar extends Component {
           </ul>
         </li>
         <li className="nav-item">
-          <a className="nav-link disabled">Disabled</a>
+          <a className="nav-link disabled" href='/anytgafh'>Disabled</a>
         </li>
       </ul>
     </div>
