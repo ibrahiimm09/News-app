@@ -21,7 +21,7 @@ export class News extends Component {
   async componentDidMount(){
    
 
-        let url = `https://newsapi.org/v2/everything?q=apple&from=2022-08-28&to=2022-08-28&sortBy=popularity&apiKey=808f61f9924442da85439c307d2e5b64&pagesize=${this.props.pageSize}`;
+        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=808f61f9924442da85439c307d2e5b64&pagesize=${this.props.pageSize}`;
         this.setState({loading : true})
         let data = await fetch(url);
         let parsedData = await data.json();
@@ -41,7 +41,7 @@ export class News extends Component {
         }
         else{
           this.setState({loading : true})
-        let url = `https://newsapi.org/v2/everything?q=apple&from=2022-08-28&to=2022-08-28&sortBy=popularity&apiKey=808f61f9924442da85439c307d2e5b64&page=${this.state.page + 1}&pagesize=${this.props.pageSize}`;
+        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=808f61f9924442da85439c307d2e5b64&page=${this.state.page + 1}&pagesize=${this.props.pageSize}`;
         let data = await fetch(url);
         let parsedData = await data.json();
         this.setState({
@@ -55,7 +55,7 @@ export class News extends Component {
 
     previousClick = async ()=>{
         console.log(`previous`);
-        let url = `https://newsapi.org/v2/everything?q=apple&from=2022-08-28&to=2022-08-28&sortBy=popularity&apiKey=808f61f9924442da85439c307d2e5b64&page=${this.state.page - 1}&pagesize=${this.props.pageSize}`;
+        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=808f61f9924442da85439c307d2e5b64&page=${this.state.page - 1}&pagesize=${this.props.pageSize}`;
         this.setState({loading : true})
         let data = await fetch(url);
         let parsedData = await data.json();
@@ -82,8 +82,8 @@ export class News extends Component {
          </div>
       </div>
        <div className=" container d-flex justify-content-between">
-        this.state.loading && <button disabled={this.state.page === 1} className=" btn btn-dark btn-lg" onClick={this.previousClick} > &larr; Previous</button>
-        <button disabled={this.state.page + 1 >5} className=" btn btn-dark btn-lg" onClick={this.nextClick} > Next &rarr;</button>
+       <button disabled={this.state.page === 1} className=" btn btn-dark btn-lg" onClick={this.previousClick} > &larr; Previous</button>
+        <button disabled={this.state.page + 1 > Math.ceil(this.state.TotalResults/this.props.pageSize)} className=" btn btn-dark btn-lg" onClick={this.nextClick} > Next &rarr;</button>
       </div>
         </>
     )
