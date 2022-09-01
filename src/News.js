@@ -35,53 +35,34 @@ export class News extends Component {
   }
 
   async componentDidMount(){
-   
-
-        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=808f61f9924442da85439c307d2e5b64&pagesize=${this.props.pageSize}`;
-        this.setState({loading : true})
-        let data = await fetch(url);
-        let parsedData = await data.json();
-        this.setState({
-          articles : parsedData.articles, 
-          TotalResults : parsedData.totalResults,
+        this.pager();
+    }
+    async pager(){
+      this.setState({loading : true})
+      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=808f61f9924442da85439c307d2e5b64&page=${this.state.page}&pagesize=${this.props.pageSize}`;
+      let data = await fetch(url);
+      let parsedData = await data.json();
+      this.setState({
+          page : this.state.page,
+          articles : parsedData.articles,
           loading : false,
-        })
-        // console.log(parsedData); 
-    
+      })
     }
 
     nextClick = async ()=>{
-
-        // console.log('next');
-        if(this.state.page + 1 > Math.ceil(this.state.TotalResults/this.props.pageSize)){
-        }
-        else{
-          this.setState({loading : true})
-        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=808f61f9924442da85439c307d2e5b64&page=${this.state.page + 1}&pagesize=${this.props.pageSize}`;
-        let data = await fetch(url);
-        let parsedData = await data.json();
         this.setState({
-            page : this.state.page + 1,
-            articles : parsedData.articles,
-            loading : false,
+          page : this.state.page + 1,
         })
-        }
-        
-    }
-
+        this.pager();
+      }
+      
     previousClick = async ()=>{
-        // console.log(`previous`);s
-        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=808f61f9924442da85439c307d2e5b64&page=${this.state.page - 1}&pagesize=${this.props.pageSize}`;
-        this.setState({loading : true})
-        let data = await fetch(url);
-        let parsedData = await data.json();
         this.setState({
-            page : this.state.page - 1,
-            articles : parsedData.articles,
-            loading :  false,
+          page : this.state.page - 1,
         })
+        this.pager();
     }
-
+    
     render() {
       return (
 
