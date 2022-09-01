@@ -1,7 +1,22 @@
 import React, { Component } from 'react'
 import NewItem from './Components/NewItem';
 import Spinner from './Components/Spinner';
+import PropTypes from 'prop-types'
+
 export class News extends Component {
+
+    static defaultProps = {
+      country : 'in',
+      category : 'sports',
+      pageSize : 8,
+    }
+
+    static propTypes = {
+      country : PropTypes.string,
+      category : PropTypes.string,
+      pageSize : PropTypes.number,
+    }
+
     articles = [];
     
   constructor(){
@@ -16,6 +31,7 @@ export class News extends Component {
       // to access the property of state such as page, use this.state.page
       page : 1,
     }
+
   }
 
   async componentDidMount(){
@@ -30,13 +46,13 @@ export class News extends Component {
           TotalResults : parsedData.totalResults,
           loading : false,
         })
-        console.log(parsedData); 
+        // console.log(parsedData); 
     
     }
 
     nextClick = async ()=>{
 
-        console.log('next');
+        // console.log('next');
         if(this.state.page + 1 > Math.ceil(this.state.TotalResults/this.props.pageSize)){
         }
         else{
@@ -54,7 +70,7 @@ export class News extends Component {
     }
 
     previousClick = async ()=>{
-        console.log(`previous`);
+        // console.log(`previous`);s
         let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=808f61f9924442da85439c307d2e5b64&page=${this.state.page - 1}&pagesize=${this.props.pageSize}`;
         this.setState({loading : true})
         let data = await fetch(url);
