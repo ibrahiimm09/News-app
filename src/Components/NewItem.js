@@ -9,7 +9,7 @@ export class NewItem extends Component {
         <div className="card-body">
           <h5 className="card-title"  style={{cursor : 'pointer'}}>{title}</h5>
           <p className="card-text">{description}</p>
-          <a href="/anything" className="btn btn-sm btn-primary" onClick={url}>Learn more</a>
+          <a href="/anything" className="btn btn-sm btn-dark" onClick={url}>Learn more</a>
         </div>
       </div>
     )
