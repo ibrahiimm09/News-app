@@ -92,7 +92,7 @@ export class News extends Component {
         <div className="row">
             {!this.state.loading && this.state.articles.map((element)=>{
             return (<div className="col-md-3 my-3" key={element.url}>
-             <NewItem title={element.title?element.title.slice(0, 45):""} description={element.description?element.description.slice(0, 80):""} imgUrl={element.urlToImage}/>
+             <NewItem title={element.title?element.title.slice(0, 45):""} description={element.description?element.description.slice(0, 80):""} imgUrl={element.urlToImage} author={element.author ? element.author : "Unknown"} date={element.publishedAt} source={element.source.name}/>
              </div>)
             })}
          </div>
@@ -103,7 +103,7 @@ export class News extends Component {
       </div>
         </>
     )
-  } 
+  }
 }
 
 export default News
