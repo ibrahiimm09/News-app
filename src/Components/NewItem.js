@@ -4,8 +4,14 @@ export class NewItem extends Component {
   render() {
     let {title , description , imgUrl , url , author , date, source} = this.props;
     return (
-        <div className="card" style={{width: "25rem" , height : '100%',}}>
-        <span className="position-absolute top-0 translate-middle badge rounded-pill bg-danger" style={{zIndex : '1', right: '0'}}>{source}</span>
+        <div className="card" style={{height : '100%',}}>
+        <div style={{
+          position: "absolute",
+          top: "0",
+          right: "0",
+        }}>
+          <span className="badge rounded-pill bg-danger">{source}</span>
+        </div>
         <img src={imgUrl?imgUrl:"https://cdn.mos.cms.futurecdn.net/PNg4ui4CbESTxrpZVg9zwX-1200-80.jpg"} className="card-img-top" alt="..." style={{height : '150px'}}/>
         <div className="card-body">
           <h5 className="card-title"  style={{cursor : 'pointer'}}>{title}</h5>

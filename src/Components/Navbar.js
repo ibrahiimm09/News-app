@@ -24,7 +24,6 @@ export class Navbar extends Component {
           <ul className="dropdown-menu" style={{textTransform : 'capitalize'}}>
             <li><Link className="dropdown-item" to="/business">business</Link></li>
             <li><Link className="dropdown-item" to="/entertainment">entertainment</Link></li>
-            <li><Link className="dropdown-item" to="/general">general</Link></li>
             <li><Link className="dropdown-item" to="/science">science</Link></li>
             <li><Link className="dropdown-item" to="/sports">sports</Link></li>
             <li><Link className="dropdown-item" to="/technology">technology</Link></li>
